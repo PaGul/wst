@@ -6,6 +6,8 @@
 
 package com.oracle.lab1_standalone;
 
+import java.util.Objects;
+
 /**
  *
  * @author pavelgulaev
@@ -75,6 +77,45 @@ public class Employee {
         return "Employee{" + "name=" + name + ", surname=" + surname + ", job=" + job + ", salary=" + salary + ", disability=" + disability + '}';
     }
 
+    @Override
+    public int hashCode() {
+        int hash = 3;
+        hash = 29 * hash + Objects.hashCode(this.name);
+        hash = 29 * hash + Objects.hashCode(this.surname);
+        hash = 29 * hash + Objects.hashCode(this.job);
+        hash = 29 * hash + Objects.hashCode(this.salary);
+        hash = 29 * hash + Objects.hashCode(this.disability);
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Employee other = (Employee) obj;
+        if (!Objects.equals(this.name, other.name)) {
+            return false;
+        }
+        if (!Objects.equals(this.surname, other.surname)) {
+            return false;
+        }
+        if (!Objects.equals(this.job, other.job)) {
+            return false;
+        }
+        if (!Objects.equals(this.salary, other.salary)) {
+            return false;
+        }
+        if (!Objects.equals(this.disability, other.disability)) {
+            return false;
+        }
+        return true;
+    }
+
+    
 
     
 }

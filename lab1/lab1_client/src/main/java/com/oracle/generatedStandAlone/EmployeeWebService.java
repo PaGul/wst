@@ -18,7 +18,7 @@ import javax.xml.ws.ResponseWrapper;
  * Generated source version: 2.2
  * 
  */
-@WebService(name = "EmployeeWebService", targetNamespace = "http://lab2_crud.oracle.com/")
+@WebService(name = "EmployeeWebService", targetNamespace = "http://lab1_standalone.oracle.com/")
 @XmlSeeAlso({
     ObjectFactory.class
 })
@@ -32,9 +32,9 @@ public interface EmployeeWebService {
      */
     @WebMethod
     @WebResult(targetNamespace = "")
-    @RequestWrapper(localName = "getEmployees", targetNamespace = "http://lab2_crud.oracle.com/", className = "com.oracle.generatedStandAlone.GetEmployees")
-    @ResponseWrapper(localName = "getEmployeesResponse", targetNamespace = "http://lab2_crud.oracle.com/", className = "com.oracle.generatedStandAlone.GetEmployeesResponse")
-    @Action(input = "http://lab2_crud.oracle.com/EmployeeWebService/getEmployeesRequest", output = "http://lab2_crud.oracle.com/EmployeeWebService/getEmployeesResponse")
+    @RequestWrapper(localName = "getEmployees", targetNamespace = "http://lab1_standalone.oracle.com/", className = "com.oracle.generatedStandAlone.GetEmployees")
+    @ResponseWrapper(localName = "getEmployeesResponse", targetNamespace = "http://lab1_standalone.oracle.com/", className = "com.oracle.generatedStandAlone.GetEmployeesResponse")
+    @Action(input = "http://lab1_standalone.oracle.com/EmployeeWebService/getEmployeesRequest", output = "http://lab1_standalone.oracle.com/EmployeeWebService/getEmployeesResponse")
     public List<Employee> getEmployees();
 
     /**
@@ -45,59 +45,11 @@ public interface EmployeeWebService {
      */
     @WebMethod
     @WebResult(targetNamespace = "")
-    @RequestWrapper(localName = "getEmployeesByParameters", targetNamespace = "http://lab2_crud.oracle.com/", className = "com.oracle.generatedStandAlone.GetEmployeesByParameters")
-    @ResponseWrapper(localName = "getEmployeesByParametersResponse", targetNamespace = "http://lab2_crud.oracle.com/", className = "com.oracle.generatedStandAlone.GetEmployeesByParametersResponse")
-    @Action(input = "http://lab2_crud.oracle.com/EmployeeWebService/getEmployeesByParametersRequest", output = "http://lab2_crud.oracle.com/EmployeeWebService/getEmployeesByParametersResponse")
+    @RequestWrapper(localName = "getEmployeesByParameters", targetNamespace = "http://lab1_standalone.oracle.com/", className = "com.oracle.generatedStandAlone.GetEmployeesByParameters")
+    @ResponseWrapper(localName = "getEmployeesByParametersResponse", targetNamespace = "http://lab1_standalone.oracle.com/", className = "com.oracle.generatedStandAlone.GetEmployeesByParametersResponse")
+    @Action(input = "http://lab1_standalone.oracle.com/EmployeeWebService/getEmployeesByParametersRequest", output = "http://lab1_standalone.oracle.com/EmployeeWebService/getEmployeesByParametersResponse")
     public List<Employee> getEmployeesByParameters(
         @WebParam(name = "arg0", targetNamespace = "")
         Employee arg0);
-
-    /**
-     * 
-     * @param arg0
-     * @return
-     *     returns java.lang.Long
-     */
-    @WebMethod
-    @WebResult(targetNamespace = "")
-    @RequestWrapper(localName = "createNewEmployee", targetNamespace = "http://lab2_crud.oracle.com/", className = "com.oracle.generatedStandAlone.CreateNewEmployee")
-    @ResponseWrapper(localName = "createNewEmployeeResponse", targetNamespace = "http://lab2_crud.oracle.com/", className = "com.oracle.generatedStandAlone.CreateNewEmployeeResponse")
-    @Action(input = "http://lab2_crud.oracle.com/EmployeeWebService/createNewEmployeeRequest", output = "http://lab2_crud.oracle.com/EmployeeWebService/createNewEmployeeResponse")
-    public Long createNewEmployee(
-        @WebParam(name = "arg0", targetNamespace = "")
-        Employee arg0);
-
-    /**
-     * 
-     * @param arg1
-     * @param arg0
-     * @return
-     *     returns int
-     */
-    @WebMethod
-    @WebResult(targetNamespace = "")
-    @RequestWrapper(localName = "updateEmployee", targetNamespace = "http://lab2_crud.oracle.com/", className = "com.oracle.generatedStandAlone.UpdateEmployee")
-    @ResponseWrapper(localName = "updateEmployeeResponse", targetNamespace = "http://lab2_crud.oracle.com/", className = "com.oracle.generatedStandAlone.UpdateEmployeeResponse")
-    @Action(input = "http://lab2_crud.oracle.com/EmployeeWebService/updateEmployeeRequest", output = "http://lab2_crud.oracle.com/EmployeeWebService/updateEmployeeResponse")
-    public int updateEmployee(
-        @WebParam(name = "arg0", targetNamespace = "")
-        long arg0,
-        @WebParam(name = "arg1", targetNamespace = "")
-        Employee arg1);
-
-    /**
-     * 
-     * @param arg0
-     * @return
-     *     returns int
-     */
-    @WebMethod
-    @WebResult(targetNamespace = "")
-    @RequestWrapper(localName = "deleteEmployee", targetNamespace = "http://lab2_crud.oracle.com/", className = "com.oracle.generatedStandAlone.DeleteEmployee")
-    @ResponseWrapper(localName = "deleteEmployeeResponse", targetNamespace = "http://lab2_crud.oracle.com/", className = "com.oracle.generatedStandAlone.DeleteEmployeeResponse")
-    @Action(input = "http://lab2_crud.oracle.com/EmployeeWebService/deleteEmployeeRequest", output = "http://lab2_crud.oracle.com/EmployeeWebService/deleteEmployeeResponse")
-    public int deleteEmployee(
-        @WebParam(name = "arg0", targetNamespace = "")
-        long arg0);
 
 }

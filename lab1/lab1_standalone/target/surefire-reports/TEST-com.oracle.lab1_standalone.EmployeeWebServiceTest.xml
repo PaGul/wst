@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<testsuite tests="1" failures="0" name="com.oracle.lab1_standalone.AppTest" time="0.463" errors="0" skipped="0">
+<testsuite tests="2" failures="0" name="com.oracle.lab1_standalone.EmployeeWebServiceTest" time="0.08" errors="0" skipped="0">
   <properties>
     <property name="java.runtime.name" value="Java(TM) SE Runtime Environment"/>
     <property name="sun.boot.library.path" value="/Library/Java/JavaVirtualMachines/jdk1.8.0_60.jdk/Contents/Home/jre/lib"/>
@@ -62,5 +62,6 @@
     <property name="ftp.nonProxyHosts" value="local|*.local|169.254/16|*.169.254/16"/>
     <property name="sun.cpu.isalist" value=""/>
   </properties>
-  <testcase classname="com.oracle.lab1_standalone.AppTest" name="testThrottlingException" time="0.315"/>
+  <testcase classname="com.oracle.lab1_standalone.EmployeeWebServiceTest" name="testGetEmployeesByParameters" time="0.062"/>
+  <testcase classname="com.oracle.lab1_standalone.EmployeeWebServiceTest" name="testGetEmployees" time="0.017"/>
 </testsuite>

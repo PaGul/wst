@@ -33,34 +33,33 @@ public class App {
         // Для J2EE сервера
 //        URL url = new URL("http://localhost:8080/lab1_j2ee-1.0-SNAPSHOT/EmployeeService?wsdl");
         EmployeeService employeeService = new EmployeeService(url);
-
-        Employee newEmployee = new Employee();
-        newEmployee.setName("Paul");
-        newEmployee.setSurname("Gulyaev");
-        newEmployee.setSalary(123456);
-        newEmployee.setJob("programmer");
-        newEmployee.setDisability(Boolean.FALSE);
-        Long createNewEmployeeId = employeeService.getEmployeeWebServicePort().createNewEmployee(newEmployee);
-        if (createNewEmployeeId != null) {
-            System.out.println("New employee ID: " + createNewEmployeeId);
-        } else {
-            System.out.println("Insert error");
-        }
-        Employee updData = new Employee();
-        updData.setName("Paul");
-        updData.setJob("programmer");
-        updData.setDisability(Boolean.FALSE);
-        updData.setSalary(314);
-        if (employeeService.getEmployeeWebServicePort().updateEmployee(10, updData) == 0) {
-            System.out.println("Successful update");
-        } else {
-            System.out.println("Update error");
-        }
-        if (employeeService.getEmployeeWebServicePort().deleteEmployee(12) == 0) {
-            System.out.println("Successful remove");
-        } else {
-            System.out.println("Remove error");
-        }
+//        Employee newEmployee = new Employee();
+//        newEmployee.setName("Paul");
+//        newEmployee.setSurname("Gulyaev");
+//        newEmployee.setSalary(123456);
+//        newEmployee.setJob("programmer");
+//        newEmployee.setDisability(Boolean.FALSE);
+//        Long createNewEmployeeId = employeeService.getEmployeeWebServicePort().createNewEmployee(newEmployee);
+//        if (createNewEmployeeId != null) {
+//            System.out.println("New employee ID: " + createNewEmployeeId);
+//        } else {
+//            System.out.println("Insert error");
+//        }
+//        Employee updData = new Employee();
+//        updData.setName("Paul");
+//        updData.setJob("programmer");
+//        updData.setDisability(Boolean.FALSE);
+//        updData.setSalary(314);
+//        if (employeeService.getEmployeeWebServicePort().updateEmployee(10, updData) == 0) {
+//            System.out.println("Successful update");
+//        } else {
+//            System.out.println("Update error");
+//        }
+//        if (employeeService.getEmployeeWebServicePort().deleteEmployee(9) == 0) {
+//            System.out.println("Successful remove");
+//        } else {
+//            System.out.println("Remove error");
+//        }
 
         Employee search = new Employee();
         search.setJob("programmer");

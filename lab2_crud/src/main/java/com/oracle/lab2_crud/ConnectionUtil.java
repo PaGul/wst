@@ -33,7 +33,7 @@ public class ConnectionUtil {
         Connection connection = null;
         try {
             connection = DriverManager.getConnection(JDBC_URL, JDBC_USER, JDBC_PASSWORD);
-            System.out.println("All right");
+            System.out.println("Server started");
         } catch (SQLException ex) {
             
             Logger.getLogger(ConnectionUtil.class.getName()).log(Level.SEVERE, null, ex);

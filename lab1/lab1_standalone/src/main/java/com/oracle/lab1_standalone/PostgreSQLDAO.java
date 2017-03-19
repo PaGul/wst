@@ -14,7 +14,6 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -26,7 +25,6 @@ public class PostgreSQLDAO {
         try (Connection connection = ConnectionUtil.getConnection()) {
             Statement stmt = connection.createStatement();
             ResultSet rs = stmt.executeQuery(String.format("select * from \"Employee\" %s", condition));
-
             while (rs.next()) {
                 String name = rs.getString("name");
                 String surname = rs.getString("surname");
@@ -37,6 +35,8 @@ public class PostgreSQLDAO {
                 employees.add(employee);
             }
         } catch (SQLException ex) {
+            Logger.getLogger(PostgreSQLDAO.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (ThrottlingException ex) {
             Logger.getLogger(PostgreSQLDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
 
