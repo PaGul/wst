@@ -7,16 +7,17 @@ import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Java class for getEmployeesByParameters complex type.
+ * <p>Java class for updateEmployee complex type.
  * 
  * <p>The following schema fragment specifies the expected content contained within this class.
  * 
  * <pre>
- * &lt;complexType name="getEmployeesByParameters">
+ * &lt;complexType name="updateEmployee">
  *   &lt;complexContent>
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;sequence>
- *         &lt;element name="arg0" type="{http://lab2_crud.oracle.com/}employee" minOccurs="0"/>
+ *         &lt;element name="arg0" type="{http://www.w3.org/2001/XMLSchema}long"/>
+ *         &lt;element name="arg1" type="{http://lab2_crud.oracle.com/}employee" minOccurs="0"/>
  *       &lt;/sequence>
  *     &lt;/restriction>
  *   &lt;/complexContent>
@@ -26,35 +27,53 @@ import javax.xml.bind.annotation.XmlType;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "getEmployeesByParameters", propOrder = {
-    "arg0"
+@XmlType(name = "updateEmployee", propOrder = {
+    "arg0",
+    "arg1"
 })
-public class GetEmployeesByParameters {
+public class UpdateEmployee {
 
-    protected Employee arg0;
+    protected long arg0;
+    protected Employee arg1;
 
     /**
      * Gets the value of the arg0 property.
      * 
-     * @return
-     *     possible object is
-     *     {@link Employee }
-     *     
      */
-    public Employee getArg0() {
+    public long getArg0() {
         return arg0;
     }
 
     /**
      * Sets the value of the arg0 property.
      * 
+     */
+    public void setArg0(long value) {
+        this.arg0 = value;
+    }
+
+    /**
+     * Gets the value of the arg1 property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link Employee }
+     *     
+     */
+    public Employee getArg1() {
+        return arg1;
+    }
+
+    /**
+     * Sets the value of the arg1 property.
+     * 
      * @param value
      *     allowed object is
      *     {@link Employee }
      *     
      */
-    public void setArg0(Employee value) {
-        this.arg0 = value;
+    public void setArg1(Employee value) {
+        this.arg1 = value;
     }
 
 }

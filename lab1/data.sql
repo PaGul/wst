@@ -1,10 +1,10 @@
 CREATE TABLE "Employee"
 (
   id bigserial NOT NULL,
-  name character varying,
-  surname character varying,
-  job character varying,
-  salary integer,
+  name character varying NOT NULL,
+  surname character varying NOT NULL,
+  job character varying NOT NULL,
+  salary integer NOT NULL,
   disability boolean NOT NULL,
   CONSTRAINT "PK_Employee" PRIMARY KEY (id)
 );
