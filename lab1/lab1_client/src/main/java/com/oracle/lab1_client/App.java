@@ -14,6 +14,7 @@ package com.oracle.lab1_client;
  */
 import com.oracle.generatedStandAlone.Employee;
 import com.oracle.generatedStandAlone.EmployeeService;
+import com.oracle.generatedStandAlone.NoDataForUpdateException;
 /*
  * Для J2EE сервера
  */
@@ -23,6 +24,8 @@ import com.oracle.generatedStandAlone.EmployeeService;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class App {
 
@@ -55,12 +58,18 @@ public class App {
 //        } else {
 //            System.out.println("Update error");
 //        }
-//        if (employeeService.getEmployeeWebServicePort().deleteEmployee(9) == 0) {
+//        if (employeeService.getEmployeeWebServicePort().deleteEmployee(10) == 0) {
 //            System.out.println("Successful remove");
 //        } else {
 //            System.out.println("Remove error");
 //        }
 
+        Employee updData = new Employee();
+        try {
+            employeeService.getEmployeeWebServicePort().updateEmployee(10, updData);
+        } catch (NoDataForUpdateException ex) {
+            Logger.getLogger(App.class.getName()).log(Level.SEVERE, null, ex);
+        }
         Employee search = new Employee();
         search.setJob("programmer");
         List<Employee> searchEmployees = employeeService.getEmployeeWebServicePort().getEmployeesByParameters(search);

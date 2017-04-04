@@ -17,14 +17,14 @@ import javax.xml.ws.WebServiceFeature;
  * Generated source version: 2.2
  * 
  */
-@WebServiceClient(name = "EmployeeService", targetNamespace = "http://lab1_standalone.oracle.com/", wsdlLocation = "http://localhost:8081/EmployeeWebService?wsdl")
+@WebServiceClient(name = "EmployeeService", targetNamespace = "http://lab3_soap_err_standalone.oracle.com/", wsdlLocation = "http://localhost:8081/EmployeeWebService?wsdl")
 public class EmployeeService
     extends Service
 {
 
     private final static URL EMPLOYEESERVICE_WSDL_LOCATION;
     private final static WebServiceException EMPLOYEESERVICE_EXCEPTION;
-    private final static QName EMPLOYEESERVICE_QNAME = new QName("http://lab1_standalone.oracle.com/", "EmployeeService");
+    private final static QName EMPLOYEESERVICE_QNAME = new QName("http://lab3_soap_err_standalone.oracle.com/", "EmployeeService");
 
     static {
         URL url = null;
@@ -69,7 +69,7 @@ public class EmployeeService
      */
     @WebEndpoint(name = "EmployeeWebServicePort")
     public EmployeeWebService getEmployeeWebServicePort() {
-        return super.getPort(new QName("http://lab1_standalone.oracle.com/", "EmployeeWebServicePort"), EmployeeWebService.class);
+        return super.getPort(new QName("http://lab3_soap_err_standalone.oracle.com/", "EmployeeWebServicePort"), EmployeeWebService.class);
     }
 
     /**
@@ -81,7 +81,7 @@ public class EmployeeService
      */
     @WebEndpoint(name = "EmployeeWebServicePort")
     public EmployeeWebService getEmployeeWebServicePort(WebServiceFeature... features) {
-        return super.getPort(new QName("http://lab1_standalone.oracle.com/", "EmployeeWebServicePort"), EmployeeWebService.class, features);
+        return super.getPort(new QName("http://lab3_soap_err_standalone.oracle.com/", "EmployeeWebServicePort"), EmployeeWebService.class, features);
     }
 
     private static URL __getWsdlLocation() {

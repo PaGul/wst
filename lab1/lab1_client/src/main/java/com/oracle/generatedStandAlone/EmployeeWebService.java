@@ -8,6 +8,7 @@ import javax.jws.WebResult;
 import javax.jws.WebService;
 import javax.xml.bind.annotation.XmlSeeAlso;
 import javax.xml.ws.Action;
+import javax.xml.ws.FaultAction;
 import javax.xml.ws.RequestWrapper;
 import javax.xml.ws.ResponseWrapper;
 
@@ -18,24 +19,12 @@ import javax.xml.ws.ResponseWrapper;
  * Generated source version: 2.2
  * 
  */
-@WebService(name = "EmployeeWebService", targetNamespace = "http://lab1_standalone.oracle.com/")
+@WebService(name = "EmployeeWebService", targetNamespace = "http://lab3_soap_err_standalone.oracle.com/")
 @XmlSeeAlso({
     ObjectFactory.class
 })
 public interface EmployeeWebService {
 
-
-    /**
-     * 
-     * @return
-     *     returns java.util.List<com.oracle.generatedStandAlone.Employee>
-     */
-    @WebMethod
-    @WebResult(targetNamespace = "")
-    @RequestWrapper(localName = "getEmployees", targetNamespace = "http://lab1_standalone.oracle.com/", className = "com.oracle.generatedStandAlone.GetEmployees")
-    @ResponseWrapper(localName = "getEmployeesResponse", targetNamespace = "http://lab1_standalone.oracle.com/", className = "com.oracle.generatedStandAlone.GetEmployeesResponse")
-    @Action(input = "http://lab1_standalone.oracle.com/EmployeeWebService/getEmployeesRequest", output = "http://lab1_standalone.oracle.com/EmployeeWebService/getEmployeesResponse")
-    public List<Employee> getEmployees();
 
     /**
      * 
@@ -45,11 +34,76 @@ public interface EmployeeWebService {
      */
     @WebMethod
     @WebResult(targetNamespace = "")
-    @RequestWrapper(localName = "getEmployeesByParameters", targetNamespace = "http://lab1_standalone.oracle.com/", className = "com.oracle.generatedStandAlone.GetEmployeesByParameters")
-    @ResponseWrapper(localName = "getEmployeesByParametersResponse", targetNamespace = "http://lab1_standalone.oracle.com/", className = "com.oracle.generatedStandAlone.GetEmployeesByParametersResponse")
-    @Action(input = "http://lab1_standalone.oracle.com/EmployeeWebService/getEmployeesByParametersRequest", output = "http://lab1_standalone.oracle.com/EmployeeWebService/getEmployeesByParametersResponse")
+    @RequestWrapper(localName = "getEmployeesByParameters", targetNamespace = "http://lab3_soap_err_standalone.oracle.com/", className = "com.oracle.generatedStandAlone.GetEmployeesByParameters")
+    @ResponseWrapper(localName = "getEmployeesByParametersResponse", targetNamespace = "http://lab3_soap_err_standalone.oracle.com/", className = "com.oracle.generatedStandAlone.GetEmployeesByParametersResponse")
+    @Action(input = "http://lab3_soap_err_standalone.oracle.com/EmployeeWebService/getEmployeesByParametersRequest", output = "http://lab3_soap_err_standalone.oracle.com/EmployeeWebService/getEmployeesByParametersResponse")
     public List<Employee> getEmployeesByParameters(
         @WebParam(name = "arg0", targetNamespace = "")
         Employee arg0);
+
+    /**
+     * 
+     * @return
+     *     returns java.util.List<com.oracle.generatedStandAlone.Employee>
+     */
+    @WebMethod
+    @WebResult(targetNamespace = "")
+    @RequestWrapper(localName = "getEmployees", targetNamespace = "http://lab3_soap_err_standalone.oracle.com/", className = "com.oracle.generatedStandAlone.GetEmployees")
+    @ResponseWrapper(localName = "getEmployeesResponse", targetNamespace = "http://lab3_soap_err_standalone.oracle.com/", className = "com.oracle.generatedStandAlone.GetEmployeesResponse")
+    @Action(input = "http://lab3_soap_err_standalone.oracle.com/EmployeeWebService/getEmployeesRequest", output = "http://lab3_soap_err_standalone.oracle.com/EmployeeWebService/getEmployeesResponse")
+    public List<Employee> getEmployees();
+
+    /**
+     * 
+     * @param arg0
+     * @return
+     *     returns java.lang.Long
+     */
+    @WebMethod
+    @WebResult(targetNamespace = "")
+    @RequestWrapper(localName = "createNewEmployee", targetNamespace = "http://lab3_soap_err_standalone.oracle.com/", className = "com.oracle.generatedStandAlone.CreateNewEmployee")
+    @ResponseWrapper(localName = "createNewEmployeeResponse", targetNamespace = "http://lab3_soap_err_standalone.oracle.com/", className = "com.oracle.generatedStandAlone.CreateNewEmployeeResponse")
+    @Action(input = "http://lab3_soap_err_standalone.oracle.com/EmployeeWebService/createNewEmployeeRequest", output = "http://lab3_soap_err_standalone.oracle.com/EmployeeWebService/createNewEmployeeResponse")
+    public Long createNewEmployee(
+        @WebParam(name = "arg0", targetNamespace = "")
+        Employee arg0);
+
+    /**
+     * 
+     * @param arg1
+     * @param arg0
+     * @return
+     *     returns int
+     * @throws NoDataForUpdateException
+     */
+    @WebMethod
+    @WebResult(targetNamespace = "")
+    @RequestWrapper(localName = "updateEmployee", targetNamespace = "http://lab3_soap_err_standalone.oracle.com/", className = "com.oracle.generatedStandAlone.UpdateEmployee")
+    @ResponseWrapper(localName = "updateEmployeeResponse", targetNamespace = "http://lab3_soap_err_standalone.oracle.com/", className = "com.oracle.generatedStandAlone.UpdateEmployeeResponse")
+    @Action(input = "http://lab3_soap_err_standalone.oracle.com/EmployeeWebService/updateEmployeeRequest", output = "http://lab3_soap_err_standalone.oracle.com/EmployeeWebService/updateEmployeeResponse", fault = {
+        @FaultAction(className = NoDataForUpdateException.class, value = "http://lab3_soap_err_standalone.oracle.com/EmployeeWebService/updateEmployee/Fault/NoDataForUpdateException")
+    })
+    public int updateEmployee(
+        @WebParam(name = "arg0", targetNamespace = "")
+        long arg0,
+        @WebParam(name = "arg1", targetNamespace = "")
+        Employee arg1)
+        throws NoDataForUpdateException
+    ;
+
+    /**
+     * 
+     * @param arg0
+     * @return
+     *     returns int
+     */
+    @WebMethod
+    @WebResult(targetNamespace = "")
+    @RequestWrapper(localName = "deleteEmployee", targetNamespace = "http://lab3_soap_err_standalone.oracle.com/", className = "com.oracle.generatedStandAlone.DeleteEmployee")
+    @ResponseWrapper(localName = "deleteEmployeeResponse", targetNamespace = "http://lab3_soap_err_standalone.oracle.com/", className = "com.oracle.generatedStandAlone.DeleteEmployeeResponse")
+    @Action(input = "http://lab3_soap_err_standalone.oracle.com/EmployeeWebService/deleteEmployeeRequest", output = "http://lab3_soap_err_standalone.oracle.com/EmployeeWebService/deleteEmployeeResponse")
+    public int deleteEmployee(
+        @WebParam(name = "arg0", targetNamespace = "")
+        long arg0);
 
 }
