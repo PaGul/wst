@@ -11,7 +11,7 @@ package com.oracle.lab3_soap_err_standalone;
  */
 import javax.xml.ws.WebFault;
 
-@WebFault(faultBean = "com.wishmaster.ifmo.ws.jaxws.errors.PersonServiceFault")
+@WebFault(faultBean = "com.oracle.lab3_soap_err_standalone.EmployeeServiceFault")
 public class NoDataForUpdateException extends Exception {
 
     private static final long serialVersionUID = -6647544772732631047L;
