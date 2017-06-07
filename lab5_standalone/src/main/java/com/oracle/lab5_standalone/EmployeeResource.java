@@ -18,7 +18,6 @@ import javax.ws.rs.core.MediaType;
 public class EmployeeResource {
 
     @GET
-    @Path("getEmployeesByParameters")
     public List<Employee> getEmployeesByParameters(@QueryParam("name") String name,
             @QueryParam("surname") String surname,
             @QueryParam("job") String job,
@@ -46,15 +45,7 @@ public class EmployeeResource {
         return employees;
     }
 
-    @GET
-    @Path("getEmployees")
-    public List<Employee> getEmployees() {
-        List<Employee> employees = new PostgreSQLDAO().getEmployees("");
-        return employees;
-    }
-
-    @GET
-    @Path("create")
+    @PUT
     public String createEmployee(@QueryParam("name") String name,
             @QueryParam("surname") String surname,
             @QueryParam("job") String job,
@@ -64,8 +55,7 @@ public class EmployeeResource {
         return dao.createEmployee(new Employee(name, surname, job, salary, disability)).toString();
     }
 
-    @GET
-    @Path("update")
+    @POST
     public String updateEmployee(@QueryParam("id") Long id,
             @QueryParam("name") String name,
             @QueryParam("surname") String surname,
@@ -77,8 +67,7 @@ public class EmployeeResource {
         return ret;
     }
 
-    @GET
-    @Path("delete")
+    @DELETE
     public String deleteEmployee(@QueryParam("id") Long id) {
         PostgreSQLDAO dao = new PostgreSQLDAO();
         return dao.deleteEmployee(id).toString();

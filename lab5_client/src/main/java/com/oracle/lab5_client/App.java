@@ -14,19 +14,19 @@ public class App {
 
     public static void main(String[] args) {
         Client client = Client.create();
-        printList(getEmployees(client));
+        printList(getEmployeesByParams(client, null, null, null, null, null));
         System.out.println();
         printList(getEmployeesByParams(client, null, null, "programmer", null, null));
         System.out.println();
         System.out.println(createEmployee(client, "Pavel", "Gulyaev", "programmer", 30000, false));
         System.out.println();
-        System.out.println(updateEmployee(client, 1l, "Paul", null, null, null, null));
+        System.out.println(updateEmployee(client, 1l, "Pasha", "Gul", null, 1, null));
         System.out.println();
-        printList(getEmployees(client));
+        printList(getEmployeesByParams(client, null, null, null, null, null));
         System.out.println();
-        System.out.println(deletePerson(client, 11l));
+        System.out.println(deletePerson(client, 25l));
         System.out.println();
-        printList(getEmployees(client));
+        printList(getEmployeesByParams(client, null, null, null, null, null));
     }
     
     private static List<Employee> getEmployeesByParams(Client client, String name,
@@ -34,19 +34,22 @@ public class App {
             String job,
             Integer salary,
             Boolean disability) {
-        WebResource webResource = client.resource(URL + "/getEmployeesByParameters");
+        WebResource webResource = client.resource(URL);
         webResource = fillWebResourceByEmployee(webResource, name, surname, job, salary, disability);
-        ClientResponse response = makeResponse(webResource);
+        ClientResponse response = webResource.accept(MediaType.APPLICATION_JSON).get(ClientResponse.class);
+        if (response.getStatus() != ClientResponse.Status.OK.getStatusCode()) {
+            throw new IllegalStateException("Request failed");
+        }
         GenericType<List<Employee>> type = new GenericType<List<Employee>>(){};
         return response.getEntity(type);
     }
     
-    private static List<Employee> getEmployees(Client client) {
-        WebResource webResource = client.resource(URL + "/getEmployees");
-        ClientResponse response = makeResponse(webResource);
-        GenericType<List<Employee>> type = new GenericType<List<Employee>>(){};
-        return response.getEntity(type);
-    }
+//    private static List<Employee> getEmployees(Client client) {
+//        WebResource webResource = client.resource(URL);
+//        ClientResponse response = makeResponse(webResource);
+//        GenericType<List<Employee>> type = new GenericType<List<Employee>>(){};
+//        return response.getEntity(type);
+//    }
 
     private static String createEmployee(
             @NotNull Client client,
@@ -55,14 +58,17 @@ public class App {
             @NotNull String job,
             @NotNull Integer salary,
             @NotNull Boolean disability) {
-        WebResource webResource = client.resource(URL + "/create");
+        WebResource webResource = client.resource(URL);
         webResource = webResource.queryParam("name", name);
         webResource = webResource.queryParam("surname", surname);
         webResource = webResource.queryParam("job", job);
         webResource = webResource.queryParam("salary", salary.toString());
         webResource = webResource.queryParam("disability", disability.toString());
 
-        ClientResponse response = makeResponse(webResource);
+        ClientResponse response = webResource.accept(MediaType.APPLICATION_JSON).put(ClientResponse.class);
+        if (response.getStatus() != ClientResponse.Status.OK.getStatusCode()) {
+            throw new IllegalStateException("Request failed");
+        }
         GenericType<String> type = new GenericType<String>() {};
         return response.getEntity(type);
     }
@@ -75,19 +81,25 @@ public class App {
             String job,
             Integer salary,
             Boolean disability) {
-        WebResource webResource = client.resource(URL + "/update");
+        WebResource webResource = client.resource(URL);
         webResource = fillWebResourceByEmployee(webResource, name, surname, job, salary, disability);
         webResource = webResource.queryParam("id", id.toString());
-        ClientResponse response = makeResponse(webResource);
+        ClientResponse response = webResource.accept(MediaType.APPLICATION_JSON).post(ClientResponse.class);
+        if (response.getStatus() != ClientResponse.Status.OK.getStatusCode()) {
+            throw new IllegalStateException("Request failed");
+        }
         GenericType<String> type = new GenericType<String>() {};
         return response.getEntity(type);
     }
 
     private static String deletePerson(Client client,
             @NotNull Long id) {
-        WebResource webResource = client.resource(URL + "/delete");
+        WebResource webResource = client.resource(URL);
         webResource = webResource.queryParam("id", id.toString());
-        ClientResponse response = makeResponse(webResource);
+        ClientResponse response = webResource.accept(MediaType.APPLICATION_JSON).delete(ClientResponse.class);
+        if (response.getStatus() != ClientResponse.Status.OK.getStatusCode()) {
+            throw new IllegalStateException("Request failed");
+        }
         GenericType<String> type = new GenericType<String>() {
         };
         return response.getEntity(type);
